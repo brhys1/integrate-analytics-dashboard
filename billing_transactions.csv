@@ -1,0 +1,6 @@
+id,encounter_id,claim_id,transaction_type,transaction_datetime,amount,description,payment_method,reference_number,created_at,updated_at
+aaaaaaaa-1111-1111-1111-aaaaaaaaaaaa,101,99999999-9999-9999-9999-999999999991,Charge,2025-01-02 10:00:00,250.00,Initial service charge,Cash,RCPT-001,2025-01-10 09:00:00,2025-01-10 09:00:00
+bbbbbbbb-2222-2222-2222-bbbbbbbbbbbb,101,99999999-9999-9999-9999-999999999991,Payment,2025-01-03 11:00:00,200.00,Insurance payment received,Insurance,PMT-001,2025-01-10 09:00:00,2025-01-10 09:00:00
+cccccccc-3333-3333-3333-cccccccccccc,102,99999999-9999-9999-9999-999999999992,Charge,2025-01-04 09:00:00,400.00,Consultation service charge,Credit Card,RCPT-002,2025-01-10 09:00:00,2025-01-10 09:00:00
+dddddddd-4444-4444-4444-dddddddddddd,103,99999999-9999-9999-9999-999999999993,Adjustment,2025-01-05 14:00:00,-20.00,Discount applied,Internal,ADJ-001,2025-01-10 09:00:00,2025-01-10 09:00:00
+eeeeeeee-5555-5555-5555-eeeeeeeeeeee,104,99999999-9999-9999-9999-999999999994,Refund,2025-01-06 15:00:00,-10.00,Refund issued,Credit Card,REF-001,2025-01-10 09:00:00,2025-01-10 09:00:00
