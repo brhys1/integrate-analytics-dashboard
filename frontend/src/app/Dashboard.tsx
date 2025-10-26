@@ -10,8 +10,22 @@ import {
   X,
   User,
   TrendingUp,
-  Users
+  Users,
+  Bell
 } from 'lucide-react';
+
+// Crescent Moon Logo Component
+const CrescentLogo = ({ className = "w-8 h-8" }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C40 80 30 70 30 50 C30 30 40 20 50 20 C50 20 50 10 50 10 Z" />
+    </svg>
+  );
+};
 
 interface MetricCardProps {
   title: string;
@@ -22,10 +36,10 @@ interface MetricCardProps {
 
 const MetricCard = ({ title, value, change, icon }: MetricCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200 border border-gray-100">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-medium text-gray-600">{title}</h3>
-        <div className="p-2 bg-teal-50 rounded-lg text-teal-600">
+        <div className="p-2 bg-blue-50 rounded-lg text-[#1e3a5f]">
           {icon}
         </div>
       </div>
@@ -53,8 +67,8 @@ const NavLink = ({ icon, label, active = false, onClick }: NavLinkProps) => {
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
         active
-          ? 'bg-teal-50 text-teal-600 font-medium'
-          : 'text-gray-700 hover:bg-gray-100'
+          ? 'bg-white text-[#1e3a5f] font-medium'
+          : 'text-gray-300 hover:bg-[#2d4a6f] hover:text-white'
       }`}
     >
       {icon}
@@ -112,24 +126,27 @@ export default function App() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 bg-[#1e3a5f] shadow-lg transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0`}
       >
         <div className="flex flex-col h-full">
           {/* Logo/Brand */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-between p-6 border-b border-[#2d4a6f]">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
+                <CrescentLogo className="w-7 h-7 text-[#1e3a5f]" />
               </div>
-              <h1 className="text-lg font-bold text-gray-900">Integrate</h1>
+              <div>
+                <h1 className="text-lg font-bold text-white">Integrate</h1>
+                <p className="text-xs text-gray-300">Healthcare</p>
+              </div>
             </div>
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="md:hidden p-1 hover:bg-gray-100 rounded"
+              className="md:hidden p-1 hover:bg-[#2d4a6f] rounded"
             >
-              <X className="w-5 h-5 text-gray-600" />
+              <X className="w-5 h-5 text-white" />
             </button>
           </div>
 
@@ -147,14 +164,14 @@ export default function App() {
           </nav>
 
           {/* User Section */}
-          <div className="p-4 border-t border-gray-200">
-            <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+          <div className="p-4 border-t border-[#2d4a6f]">
+            <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#2d4a6f] cursor-pointer transition-colors">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#1e3a5f] font-medium">
                 JD
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">John Doe</p>
-                <p className="text-xs text-gray-500">Administrator</p>
+                <p className="text-sm font-medium text-white">John Doe</p>
+                <p className="text-xs text-gray-300">Administrator</p>
               </div>
             </div>
           </div>
@@ -171,19 +188,25 @@ export default function App() {
                 onClick={() => setIsSidebarOpen(true)}
                 className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
               >
-                <Menu className="w-6 h-6 text-gray-600" />
+                <Menu className="w-6 h-6 text-[#1e3a5f]" />
               </button>
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900">
-                  Integrate Analytics Dashboard
-                </h2>
-                <p className="text-sm text-gray-500 hidden sm:block">
-                  Welcome back! Here's your healthcare analytics overview
-                </p>
+              <div className="flex items-center gap-3">
+                <CrescentLogo className="w-8 h-8 text-[#1e3a5f] md:hidden" />
+                <div>
+                  <h2 className="text-xl md:text-2xl font-bold text-[#1e3a5f]">
+                    Integrate Analytics Dashboard
+                  </h2>
+                  <p className="text-sm text-gray-500 hidden sm:block">
+                    bridging the gap between price and power.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full flex items-center justify-center cursor-pointer hover:shadow-md transition-shadow">
+              <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <Bell className="w-5 h-5 text-gray-600" />
+              </button>
+              <div className="w-10 h-10 bg-[#1e3a5f] rounded-full flex items-center justify-center cursor-pointer hover:shadow-md transition-shadow">
                 <User className="w-5 h-5 text-white" />
               </div>
             </div>
@@ -194,7 +217,7 @@ export default function App() {
         <main className="p-4 md:p-8">
           {/* Page Title */}
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <h3 className="text-2xl font-bold text-[#1e3a5f] mb-2">
               {activePage}
             </h3>
             <p className="text-gray-600">
@@ -216,18 +239,18 @@ export default function App() {
           </div>
 
           {/* Additional Content Area */}
-          <div className="mt-8 bg-white rounded-lg shadow-md p-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-100">
+            <h4 className="text-lg font-semibold text-[#1e3a5f] mb-4">
               Recent Activity
             </h4>
             <div className="space-y-3">
               {[1, 2, 3].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
-                    <Activity className="w-5 h-5 text-teal-600" />
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Activity className="w-5 h-5 text-[#1e3a5f]" />
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-900">
