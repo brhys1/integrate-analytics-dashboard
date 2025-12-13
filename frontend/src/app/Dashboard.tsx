@@ -264,60 +264,133 @@ export default function App() {
         </header>
 
         <main className="p-6 md:p-8 max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h3 className="text-3xl font-bold text-[#1e3a5f] mb-2">{activePage}</h3>
-            <p className="text-gray-600 text-lg">Overview of your key metrics and performance indicators</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {metrics.map((metric) => (
-              <MetricCard
-                key={metric.title}
-                title={metric.title}
-                value={metric.value}
-                change={metric.change}
-                icon={metric.icon}
-              />
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-              <div className="mb-6">
-                <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Financial Performance</h4>
-                <p className="text-gray-600">Claims analytics and billing insights</p>
+          {activePage === 'Dashboard' && (
+            <>
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-[#1e3a5f] mb-2">Dashboard</h3>
+                <p className="text-gray-600 text-lg">Overview of your key metrics and performance indicators</p>
               </div>
 
-              <TableauEmbed
-                src="https://public.tableau.com/views/Claims_17655924387060/Dashboard1"
-                height="600px"
-              />
-            </div>
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {metrics.map((metric) => (
+                  <MetricCard
+                    key={metric.title}
+                    title={metric.title}
+                    value={metric.value}
+                    change={metric.change}
+                    icon={metric.icon}
+                  />
+                ))}
+              </div>
 
-          <div className="mt-8 bg-white rounded-xl shadow-sm p-8 border border-gray-200">
-            <div className="mb-6">
-              <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Recent Activity</h4>
-              <p className="text-gray-600">Latest updates and notifications</p>
-            </div>
-            <div className="space-y-3">
-              {[
-                { title: 'New claim submitted', time: '2 hours ago' },
-                { title: 'Payment processed successfully', time: '4 hours ago' },
-                { title: 'Patient record updated', time: '6 hours ago' }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition-all duration-200 cursor-pointer border border-gray-100 hover:border-blue-200">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center shadow-sm">
-                    <Activity className="w-6 h-6 text-[#1e3a5f]" />
+              <div className="grid grid-cols-1 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                  <div className="mb-6">
+                    <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Financial Performance</h4>
+                    <p className="text-gray-600">Claims analytics and billing insights</p>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold text-gray-900">{item.title}</p>
-                    <p className="text-xs text-gray-500 mt-1">{item.time}</p>
-                  </div>
+
+                  <TableauEmbed
+                    src="https://public.tableau.com/views/Claims_17655924387060/Dashboard1"
+                    height="600px"
+                  />
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+
+              <div className="mt-8 bg-white rounded-xl shadow-sm p-8 border border-gray-200">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Recent Activity</h4>
+                  <p className="text-gray-600">Latest updates and notifications</p>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { title: 'New claim submitted', time: '2 hours ago' },
+                    { title: 'Payment processed successfully', time: '4 hours ago' },
+                    { title: 'Patient record updated', time: '6 hours ago' }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-4 p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition-all duration-200 cursor-pointer border border-gray-100 hover:border-blue-200">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center shadow-sm">
+                        <Activity className="w-6 h-6 text-[#1e3a5f]" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-gray-900">{item.title}</p>
+                        <p className="text-xs text-gray-500 mt-1">{item.time}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          {activePage === 'Billing' && (
+            <>
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-[#1e3a5f] mb-2">Billing</h3>
+                <p className="text-gray-600 text-lg">Transaction analytics and billing insights</p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                  <div className="mb-6">
+                    <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Billing Transactions</h4>
+                    <p className="text-gray-600">Number of transactions by type</p>
+                  </div>
+
+                  <TableauEmbed
+                    src="https://public.tableau.com/app/profile/mariam.mandwee/viz/BillingTransactions/NumberofTransactionsbyType"
+                    height="600px"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+
+          {activePage === 'Claims' && (
+            <>
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-[#1e3a5f] mb-2">Claims</h3>
+                <p className="text-gray-600 text-lg">Claims processing and analytics</p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                  <div className="mb-6">
+                    <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Claims Analysis</h4>
+                    <p className="text-gray-600">Detailed claims breakdown and metrics</p>
+                  </div>
+
+                  <TableauEmbed
+                    src="https://public.tableau.com/views/Claims_17655924387060/Dashboard1"
+                    height="600px"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+
+          {activePage === 'Operations' && (
+            <>
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-[#1e3a5f] mb-2">Operations</h3>
+                <p className="text-gray-600 text-lg">Operational insights and insurance payer analytics</p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                  <div className="mb-6">
+                    <h4 className="text-2xl font-bold text-[#1e3a5f] mb-1">Insurance Payers</h4>
+                    <p className="text-gray-600">Active vs inactive insurance payers</p>
+                  </div>
+
+                  <TableauEmbed
+                    src="https://public.tableau.com/app/profile/mariam.mandwee/viz/IntegrateDataVisualizations/ActivevsInactiveInsurancePayers"
+                    height="600px"
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </main>
       </div>
     </div>
