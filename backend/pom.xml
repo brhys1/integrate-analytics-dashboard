@@ -36,11 +36,16 @@
             <optional>true</optional>
         </dependency>
         
-        <!-- Apache Commons CSV -->
+        <!-- PostgreSQL Dependencies -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-csv</artifactId>
-            <version>1.10.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
         
         <!-- Jackson for JSON -->
