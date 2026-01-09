@@ -51,7 +51,7 @@ GET /api/billing/claims
 GET /api/billing/insurance-payers
 GET /api/billing/patient-insurance
 
----
+```
 
 ## Architecture
 
@@ -63,7 +63,7 @@ Spring Boot REST API
 ↓ JPA / Hibernate
 PostgreSQL (AWS RDS)
 
-````
+```
 
 The backend follows a layered architecture:
 - Controllers for API exposure    
@@ -114,7 +114,5 @@ The backend follows a layered architecture:
 
 ## Team
 
-- **Product Manager:** Rhys Burman 
+- **Project Manager:** Rhys Burman 
 - **Analysts:** Rayan Kamdem, Ajay Wadhwani, Mariam Mandwee, Akram Oudeif, Jainam Patel, Jessica Ni
-
-```
