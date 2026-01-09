@@ -31,7 +31,7 @@ Analytics Dashboard for a healthcare analytics dashboard built for **Integrate H
 
 ## Data Model
 
-The backend operates on **four core relational tables**, migrated entirely from legacy CSV files:
+The data had **four core relational tables**, migrated from legacy CSV files to PostgreSQL:
 
 1. **billing_transactions** – individual billing and payment records  
 2. **claims** – insurance claim submissions and statuses  
@@ -39,19 +39,6 @@ The backend operates on **four core relational tables**, migrated entirely from 
 4. **patient_insurance** – patient insurance data
 
 ---
-
-## API Endpoints
-
-The backend exposes RESTful endpoints to support frontend dashboards and visualizations:
-
-```
-
-GET /api/billing/transactions
-GET /api/billing/claims
-GET /api/billing/insurance-payers
-GET /api/billing/patient-insurance
-
-```
 
 ## Architecture
 
@@ -68,6 +55,27 @@ PostgreSQL (AWS RDS)
 The backend follows a layered architecture:
 - Controllers for API exposure    
 - Repositories for database access via Spring Data JPA  
+
+## API Endpoints
+
+The backend exposes RESTful endpoints to support frontend dashboards and visualizations:
+
+```
+
+GET /api/billing/transactions
+GET /api/billing/claims
+GET /api/billing/insurance-payers
+GET /api/billing/patient-insurance
+
+```
+
+## Frontend
+
+The frontend is built using **Next.js** and **Tailwind CSS** and serves as the primary interface for hospital administrators. It consumes data from the backend REST APIs and presents key billing, claims, and operational metrics in a clear, interactive format.
+
+Data is fetched from the backend using client-side requests and React hooks, enabling the dashboard to stay up to date with the database.
+
+For more analytics and visualization, the frontend integrates with **Tableau**, which is used to create charts and dashboards based on the backend-provided datasets.
 
 ---
 
